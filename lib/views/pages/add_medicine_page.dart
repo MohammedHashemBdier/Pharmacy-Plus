@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_plus/constants/App_Bar.dart';
-import 'package:pharmacy_plus/constants/App_Colors.dart';
-import 'package:pharmacy_plus/screens/Home.dart';
+import 'package:pharmacy_plus/views/widgets/my_app_bar.dart';
+import 'package:pharmacy_plus/constants/colors.dart';
+import 'package:pharmacy_plus/views/pages/home_page.dart';
 import 'package:flutter/services.dart';
 
-class AddMedicine extends StatefulWidget {
+class AddMedicinePage extends StatefulWidget {
+  const AddMedicinePage({super.key});
+
   @override
-  Add_Medicine createState() => Add_Medicine();
+  State<AddMedicinePage> createState() => _AddMedicinePageState();
 }
 
-class Add_Medicine extends State<AddMedicine> {
+class _AddMedicinePageState extends State<AddMedicinePage> {
   TextEditingController scientificNameController = TextEditingController();
   TextEditingController tradeNameController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
@@ -22,7 +24,7 @@ class Add_Medicine extends State<AddMedicine> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: const MyAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -32,51 +34,51 @@ class Add_Medicine extends State<AddMedicine> {
               Text('the scientific name'.tr),
               TextField(
                 controller: scientificNameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: app_Colors.c2,
+                      color: AppColors.c2,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text("trade name".tr),
               TextField(
                 controller: tradeNameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: app_Colors.c2,
+                      color: AppColors.c2,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text('category'.tr),
               TextField(
                 controller: categoryController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: app_Colors.c2,
+                      color: AppColors.c2,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text('the manufacture company'.tr),
               TextField(
                 controller: companyController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: app_Colors.c2,
+                      color: AppColors.c2,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text('quantity'.tr),
               TextFormField(
                 controller: quantityController,
@@ -93,24 +95,24 @@ class Add_Medicine extends State<AddMedicine> {
                   }
                   return null;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: app_Colors.c2,
+                      color: AppColors.c2,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text('expiration date'.tr),
               TextFormField(
                 controller: expiryController,
                 textDirection: TextDirection.rtl,
                 readOnly: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: app_Colors.c2,
+                      color: AppColors.c2,
                     ),
                   ),
                   suffixIcon: Icon(Icons.calendar_today),
@@ -119,7 +121,7 @@ class Add_Medicine extends State<AddMedicine> {
                   _selectDate(context);
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text('the price'.tr),
               TextFormField(
                 controller: priceController,
@@ -137,26 +139,26 @@ class Add_Medicine extends State<AddMedicine> {
                   }
                   return null;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: app_Colors.c2,
+                      color: AppColors.c2,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 32.0),
+              const SizedBox(height: 32.0),
               ElevatedButton(
                 onPressed: () {
                   addMedicine();
-                  Get.off(Home());
+                  Get.off(HomePage());
                 },
-                child: Text('add medication'.tr),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    app_Colors.c2,
+                    AppColors.c2,
                   ),
                 ),
+                child: Text('add medication'.tr),
               ),
             ],
           ),
@@ -183,5 +185,4 @@ Future<void> _selectDate(BuildContext context) async {
   if (picked != null && picked != selectedDate) {
     // إذا تم اختيار تاريخ، قم بتحديث القيمة في الحقل
   }
-  ;
 }

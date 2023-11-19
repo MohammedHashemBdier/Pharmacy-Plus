@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_plus/constants/App_Colors.dart';
-import 'package:pharmacy_plus/constants/App_Images.dart';
-import 'Home.dart';
+import 'package:pharmacy_plus/constants/colors.dart';
+import 'package:pharmacy_plus/constants/images.dart';
+import 'home_page.dart';
 
-class Login extends StatefulWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
-  _Login createState() => _Login();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _Login extends State<Login> {
+class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
   bool isPasswordIncorrect = false;
 
@@ -25,13 +27,13 @@ class _Login extends State<Login> {
           child: IconButton(
             onPressed: () {
               // تغيير اللغة عند الضغط على زر تغيير اللغة
-              if (Get.locale == Locale('en')) {
-                Get.updateLocale(Locale('ar'));
+              if (Get.locale == const Locale('en')) {
+                Get.updateLocale(const Locale('ar'));
               } else {
-                Get.updateLocale(Locale('en'));
+                Get.updateLocale(const Locale('en'));
               }
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.language_sharp,
               color: Colors.black,
               size: 35,
@@ -49,7 +51,7 @@ class _Login extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                app_Images.imagesLogo,
+                AppImages.imagesLogo,
                 width: 300,
                 height: 300,
               ),
@@ -60,7 +62,7 @@ class _Login extends State<Login> {
                 child: Text(
                   // عرض اسم التطبيق
                   'فارماسي بلس'.tr,
-                  style: TextStyle(color: Colors.black, fontSize: 30),
+                  style: const TextStyle(color: Colors.black, fontSize: 30),
                 ),
               ),
               Padding(
@@ -68,22 +70,22 @@ class _Login extends State<Login> {
                 child: Text(
                   // نص توجيه المستخدم لإدخال كلمة المرور
                   'enter the password'.tr,
-                  style: TextStyle(fontSize: 18.0),
+                  style: const TextStyle(fontSize: 18.0),
                 ),
               ),
               TextField(
                 controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderSide: BorderSide(),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: app_Colors.c2,
+                      color: AppColors.c2,
                     ),
                   ),
-                  errorBorder: OutlineInputBorder(
+                  errorBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.red,
                     ),
@@ -94,18 +96,18 @@ class _Login extends State<Login> {
                       isPasswordIncorrect ? 'password is incorrect'.tr : null,
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
                   // استدعاء تابع تسجيل الدخول
                   login();
                 },
-                child: Text('login'.tr),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    app_Colors.c2,
+                    AppColors.c2,
                   ),
                 ),
+                child: Text('login'.tr),
               ),
             ],
           ),
@@ -131,7 +133,7 @@ class _Login extends State<Login> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Get.off(Home());
+                  Get.off(const HomePage());
                 },
                 child: Text('ok'.tr),
               ),

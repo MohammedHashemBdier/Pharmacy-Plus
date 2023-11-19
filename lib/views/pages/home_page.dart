@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_plus/constants/App_Bar.dart';
+import 'package:pharmacy_plus/views/widgets/my_app_bar.dart';
 
-class Home extends StatelessWidget {
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: MyAppBar(),
       body: SingleChildScrollView(),
     );

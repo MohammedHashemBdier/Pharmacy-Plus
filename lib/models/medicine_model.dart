@@ -1,4 +1,4 @@
-abstract class Medicine {
+abstract class MedicineModel {
   String? tradeName;
   String? scientificName;
   String? category;
@@ -6,7 +6,8 @@ abstract class Medicine {
   int? quantity;
   String? expiry;
   int? price;
-  Medicine({
+  
+  MedicineModel({
     required this.tradeName,
     required this.scientificName,
     required this.category,

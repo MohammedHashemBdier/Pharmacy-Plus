@@ -1,5 +1,5 @@
-class app_Images {
-  app_Images._();
+class AppImages {
+  AppImages._();
   
   static const String imagesLogo = "assets/images/Logo.png";
 }

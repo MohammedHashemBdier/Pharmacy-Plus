@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_plus/lang/AppTranslation.dart';
-import 'package:pharmacy_plus/screens/Login.dart';
+import 'package:pharmacy_plus/lang/app_translation.dart';
+import 'package:pharmacy_plus/views/pages/login_page.dart';
 
 void main() {
-  runApp(
-    Pharmacy_Plus(),
-  );
+  runApp(const PharmacyPlus());
 }
 
-class Pharmacy_Plus extends StatelessWidget {
-  const Pharmacy_Plus({super.key});
+class PharmacyPlus extends StatelessWidget {
+  const PharmacyPlus({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class Pharmacy_Plus extends StatelessWidget {
       translations: AppTranslation(),
       locale: AppTranslation.fallbackLocale,
       fallbackLocale: AppTranslation.fallbackLocale,
-      home: Login(),
+      home: const LoginPage(),
     );
   }
 }
