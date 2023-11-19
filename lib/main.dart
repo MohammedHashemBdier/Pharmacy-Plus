@@ -13,12 +13,13 @@ class PharmacyPlus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      home: const LoginPage(),
       title: 'فارماسي بلس'.tr,
       debugShowCheckedModeBanner: false,
       translations: AppTranslation(),
       locale: AppTranslation.fallbackLocale,
       fallbackLocale: AppTranslation.fallbackLocale,
-      home: const LoginPage(),
+      theme: ThemeData(fontFamily: 'Baloo'),
     );
   }
 }
