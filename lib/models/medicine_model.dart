@@ -1,19 +1,23 @@
-abstract class MedicineModel {
-  String? tradeName;
-  String? scientificName;
-  String? category;
-  String? companyName;
-  int? quantity;
-  String? expiry;
-  int? price;
-  
-  MedicineModel({
-    required this.tradeName,
+// medicine.dart
+
+class Medicine {
+  final int id;
+  final String scientificName;
+  final String commercialName;
+  final String category;
+  final String manufacturer;
+  final int quantity;
+  final DateTime expiryDate;
+  final double price;
+
+  Medicine({
+    required this.id,
     required this.scientificName,
+    required this.commercialName,
     required this.category,
-    required this.companyName,
+    required this.manufacturer,
     required this.quantity,
-    required this.expiry,
+    required this.expiryDate,
     required this.price,
   });
 }
