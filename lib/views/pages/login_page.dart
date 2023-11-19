@@ -107,7 +107,12 @@ class _LoginPageState extends State<LoginPage> {
                     AppColors.c2,
                   ),
                 ),
-                child: Text('login'.tr),
+                child: Text(
+                  'login'.tr,
+                  style: TextStyle(
+                    color: AppColors.c3,
+                  ),
+                ),
               ),
             ],
           ),
@@ -135,7 +140,12 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Get.off(const HomePage());
                 },
-                child: Text('ok'.tr),
+                child: Text(
+                  'ok'.tr,
+                  style: TextStyle(
+                    color: AppColors.c2,
+                  ),
+                ),
               ),
             ],
           );
@@ -158,7 +168,12 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('ok'.tr),
+                child: Text(
+                  'ok'.tr,
+                  style: TextStyle(
+                    color: AppColors.c2,
+                  ),
+                ),
               ),
             ],
           );

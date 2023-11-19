@@ -140,6 +140,7 @@ void showLogoutConfirmationDialog() {
   Get.defaultDialog(
     title: 'confirmation'.tr,
     middleText: 'logout_confirmation_message'.tr,
+    backgroundColor: Colors.white,
     textConfirm: 'confirm'.tr,
     buttonColor: AppColors.c2,
     textCancel: 'cancel'.tr,
