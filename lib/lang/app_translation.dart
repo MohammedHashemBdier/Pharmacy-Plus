@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:get/get_navigation/src/root/internacionalization.dart';
+import 'package:get/get.dart';
 
 class AppTranslation extends Translations {
   static const fallbackLocale = Locale('ar', 'AR');
@@ -37,6 +37,9 @@ class AppTranslation extends Translations {
           'value must contain numbers only': 'Value must contain numbers only',
           'expiration date': 'Expiry Date:',
           'the price': 'Price:',
+          'search field': 'filter by medicine or category',
+          'medicines title': 'Medicines',
+          'add medicine': 'add medicine',
         },
         'ar_AR': {
           'فارماسي بلس': 'فارماسي بلس',
@@ -71,6 +74,9 @@ class AppTranslation extends Translations {
               'يجب أن تحتوي القيمة على أرقام فقط',
           'expiration date': 'تاريخ إنتهاء الصلاحية:',
           'the price': 'السعر:',
+          'search field': 'تصفية حسب الدواء أو التصنيف',
+          'medicines title': 'الأدوية',
+          'add medicine': 'إضافة دواء',
         },
       };
 }

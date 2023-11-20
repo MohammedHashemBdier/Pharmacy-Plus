@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
   final double height;
-  final double width;
+  final double? width;
   final String hint;
   final double fontSize;
   final Widget? suffixIcon;
@@ -16,7 +16,7 @@ class MyTextField extends StatelessWidget {
   const MyTextField({
     super.key,
     required this.height,
-    required this.width,
+    this.width,
     this.hint = '',
     this.fontSize = 20,
     this.suffixIcon,
@@ -46,6 +46,8 @@ class MyTextField extends StatelessWidget {
           fontWeight: FontWeight.w600,
         ),
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
+          suffixIconColor: const Color(0xFF767676),
           contentPadding: EdgeInsets.symmetric(
             vertical: height / 2,
             horizontal: 20,
