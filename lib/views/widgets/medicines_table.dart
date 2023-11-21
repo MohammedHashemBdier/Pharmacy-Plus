@@ -22,73 +22,27 @@ class MedicinesTable extends StatelessWidget {
           ],
         ),
         ...controller.filteredMedicines
-            .map((medicine) => InkWell(
-                  onTap: () {},
-                  child: Row(
-                    children: [
-                      MyCell(medicine.scientificName!),
-                      MyCell(medicine.commercialName!),
-                      MyCell(medicine.category!),
-                      MyCell(medicine.manufacturer!),
-                      MyCell(medicine.quantity!.toString()),
-                      MyCell(medicine.expiryDate!.toString()),
-                      MyCell(medicine.price!.toString()),
-                    ],
-                  ),
+            .map((medicine) => Row(
+                  children: [
+                    MyCell(medicine.scientificName!),
+                    MyCell(medicine.commercialName!),
+                    MyCell(medicine.category!),
+                    MyCell(medicine.manufacturer!),
+                    MyCell(medicine.quantity!.toString()),
+                    MyCell(medicine.expiryDate!.toString()),
+                    MyCell(medicine.price!.toString()),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.edit),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.delete),
+                    ),
+                  ],
                 ))
             .toList(),
       ]),
-      // DataTable(
-      //   columnSpacing: 0,
-      //   columns: [
-      //     DataColumn(
-      //       label: Expanded(
-      //         child: MyCell('the scientific name'.tr),
-      //       ),
-      //     ),
-      //     DataColumn(
-      //       label: Expanded(
-      //         child: MyCell('trade name'.tr),
-      //       ),
-      //     ),
-      //     DataColumn(
-      //       label: Expanded(
-      //         child: MyCell('category'.tr),
-      //       ),
-      //     ),
-      //     DataColumn(
-      //       label: Expanded(
-      //         child: MyCell('the manufacture company'.tr),
-      //       ),
-      //     ),
-      //     DataColumn(
-      //       label: Expanded(
-      //         child: MyCell('quantity'.tr),
-      //       ),
-      //     ),
-      //     DataColumn(
-      //       label: Expanded(
-      //         child: MyCell('expiration date'.tr),
-      //       ),
-      //     ),
-      //     DataColumn(
-      //       label: Expanded(
-      //         child: MyCell('the price'.tr),
-      //       ),
-      //     ),
-      //   ],
-      //   rows: controller.filteredMedicines
-      //       .map((medicine) => DataRow(cells: [
-      //             DataCell(MyCell(medicine.scientificName!)),
-      //             DataCell(MyCell(medicine.commercialName!)),
-      //             DataCell(MyCell(medicine.category!)),
-      //             DataCell(MyCell(medicine.manufacturer!)),
-      //             DataCell(MyCell(medicine.quantity!.toString())),
-      //             DataCell(MyCell(medicine.expiryDate!.toString())),
-      //             DataCell(MyCell(medicine.price!.toString())),
-      //           ]))
-      //       .toList(),
-      // ),
     );
   }
 }
