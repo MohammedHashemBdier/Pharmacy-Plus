@@ -7,9 +7,9 @@ import 'package:pharmacy_plus/views/widgets/my_app_bar.dart';
 import 'package:pharmacy_plus/views/widgets/my_text_field.dart';
 
 class MedicinesTablePage extends StatelessWidget {
-  MedicinesTablePage({super.key});
+  const MedicinesTablePage({super.key});
 
-  final controller = Get.put(MedicineController());
+  static final controller = Get.put(MedicineController());
 
   @override
   Widget build(BuildContext context) {

@@ -55,7 +55,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         Tooltip(
           message: 'search'.tr,
           child: IconButton(
-            onPressed: () {},
+            onPressed: () => Get.toNamed('medicines'),
             icon: const Icon(
               Icons.search,
               color: AppColors.c3,
