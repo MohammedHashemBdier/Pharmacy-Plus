@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/constants/images.dart';
-import 'package:pharmacy_plus/views/pages/add_medicine_page.dart';
 import 'package:pharmacy_plus/views/pages/home_page.dart';
 import 'package:pharmacy_plus/views/pages/login_page.dart';
 
@@ -12,7 +11,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.c1,
+      backgroundColor: AppColors.c4,
       centerTitle: true,
       title: Center(
         child: Tooltip(
@@ -53,16 +52,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Tooltip(
-          message: 'search'.tr,
-          child: IconButton(
-            onPressed: () => Get.toNamed('medicines'),
-            icon: const Icon(
-              Icons.search,
-              color: AppColors.c3,
-            ),
-          ),
-        ),
-        Tooltip(
           message: 'notifications'.tr,
           child: IconButton(
             onPressed: () {},
@@ -84,18 +73,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
             icon: const Icon(
               Icons.language_sharp,
-              color: AppColors.c3,
-            ),
-          ),
-        ),
-        Tooltip(
-          message: 'add medication'.tr,
-          child: IconButton(
-            onPressed: () {
-              Get.to(const AddMedicinePage());
-            },
-            icon: const Icon(
-              Icons.add,
               color: AppColors.c3,
             ),
           ),

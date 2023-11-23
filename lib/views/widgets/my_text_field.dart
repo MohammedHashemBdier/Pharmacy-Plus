@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_plus/constants/colors.dart';
 
 class MyTextField extends StatelessWidget {
   final double height;
   final double? width;
   final String hint;
-  final double fontSize;
   final Widget? suffixIcon;
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -18,7 +18,6 @@ class MyTextField extends StatelessWidget {
     required this.height,
     this.width,
     this.hint = '',
-    this.fontSize = 20,
     this.suffixIcon,
     this.controller,
     this.focusNode,
@@ -32,39 +31,31 @@ class MyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
+      height: 50,
       child: TextField(
         onTapOutside: onTapOutside,
         controller: controller,
         focusNode: focusNode,
         onChanged: onChanged,
-        cursorColor: const Color(0xFF767676),
         readOnly: readOnly,
         enabled: enabled,
-        style: TextStyle(
-          color: const Color(0xFF767676),
-          fontSize: fontSize,
-          fontWeight: FontWeight.w600,
-        ),
         decoration: InputDecoration(
+          focusColor: AppColors.c2,
           suffixIcon: suffixIcon,
-          suffixIconColor: const Color(0xFF767676),
           contentPadding: EdgeInsets.symmetric(
             vertical: height / 2,
             horizontal: 20,
           ),
           label: Text(
             hint,
-            style: TextStyle(color: Colors.grey.shade400),
           ),
           border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
-          focusColor: const Color(0xFF767676),
           focusedBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: BorderRadius.all(Radius.circular(20)),
             borderSide: BorderSide(
-              color: Color(0xFF767676),
-              width: 1.5,
+              color: AppColors.c2,
             ),
           ),
         ),

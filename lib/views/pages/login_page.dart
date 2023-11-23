@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/constants/images.dart';
-import 'home_page.dart';
+import 'package:pharmacy_plus/views/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -78,14 +78,17 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: true,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
                     borderSide: BorderSide(),
                   ),
                   focusedBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
                     borderSide: BorderSide(
                       color: AppColors.c2,
                     ),
                   ),
                   errorBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
                     borderSide: BorderSide(
                       color: Colors.red,
                     ),
