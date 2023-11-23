@@ -139,6 +139,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: 20,
+                ),
+              )
             ],
           ),
         ),
