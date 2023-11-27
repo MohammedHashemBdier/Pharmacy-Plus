@@ -161,7 +161,7 @@ class AddMedicinePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 20, bottom: 20),
                     child: SizedBox(
-                      width: 270,
+                      width: 280,
                       height: 50,
                       child: TextFormField(
                         textDirection: TextDirection.rtl,

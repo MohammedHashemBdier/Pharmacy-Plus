@@ -5,7 +5,7 @@ import 'package:pharmacy_plus/constants/images.dart';
 import 'package:pharmacy_plus/views/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -18,133 +18,195 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 50,
+      body: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.c2.withOpacity(1),
+              spreadRadius: 2,
+              blurRadius: 5,
+            ),
+          ],
+          gradient: const LinearGradient(
+            colors: [AppColors.c2, AppColors.c3],
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                alignment: Alignment.topRight,
-                child: Tooltip(
-                  message: 'change the language'.tr,
-                  child: IconButton(
-                    onPressed: () {
-                      // تغيير اللغة عند الضغط على زر تغيير اللغة
-                      if (Get.locale == const Locale('en')) {
-                        Get.updateLocale(const Locale('ar'));
-                      } else {
-                        Get.updateLocale(const Locale('en'));
-                      }
-                    },
-                    icon: const Icon(
-                      Icons.language_sharp,
-                      color: Colors.black,
-                      size: 35,
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  alignment: Alignment.topRight,
+                  child: Tooltip(
+                    message: 'change the language'.tr,
+                    child: IconButton(
+                      onPressed: () {
+                        // تغيير اللغة عند الضغط على زر تغيير اللغة
+                        if (Get.locale == const Locale('en')) {
+                          Get.updateLocale(const Locale('ar'));
+                        } else {
+                          Get.updateLocale(const Locale('en'));
+                        }
+                      },
+                      icon: const Icon(
+                        Icons.language_sharp,
+                        color: Colors.black,
+                        size: 35,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Image.asset(
-                AppImages.imagesLogo,
-                width: 300,
-                height: 300,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 25,
-                ),
-                child: Text(
-                  // عرض اسم التطبيق
-                  'فارماسي بلس'.tr,
-                  style: const TextStyle(color: Colors.black, fontSize: 30),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text(
-                  // نص توجيه المستخدم لإدخال كلمة المرور
-                  'enter the password'.tr,
-                  style: const TextStyle(fontSize: 18.0),
-                ),
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(),
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(
-                      color: AppColors.c2,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Spacer(
+                      flex: 1,
                     ),
-                  ),
-                  errorBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(
-                      color: Colors.red,
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            AppImages.imagesLogo,
+                            width: 300,
+                            height: 300,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 25),
+                            child: Text(
+                              // عرض اسم التطبيق
+                              'فارماسي بلس'.tr,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 30,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  labelText: 'username'.tr,
-                  hintText: 'enter the username'.tr,
-                  errorText:
-                      isPasswordIncorrect ? 'password is incorrect'.tr : null,
-                ),
-              ),
-              const SizedBox(height: 10.0),
-              TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(),
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(
-                      color: AppColors.c2,
+                    const Spacer(
+                      flex: 1,
                     ),
-                  ),
-                  errorBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    borderSide: BorderSide(
-                      color: Colors.red,
+                    const SizedBox(
+                      height: 500,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: VerticalDivider(
+                          color: Colors.black,
+                          thickness: 1,
+                        ),
+                      ),
                     ),
-                  ),
-                  labelText: 'password'.tr,
-                  hintText: 'enter the password'.tr,
-                  errorText:
-                      isPasswordIncorrect ? 'password is incorrect'.tr : null,
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.c3,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: AppColors.c1,
+                            width: 1,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.c1.withOpacity(1),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(30),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: Text(
+                                  // نص توجيه المستخدم لإدخال كلمة المرور
+                                  'enter the password'.tr,
+                                  style: const TextStyle(fontSize: 18.0),
+                                ),
+                              ),
+                              const SizedBox(height: 10.0),
+                              SizedBox(
+                                width: 300,
+                                height: 100,
+                                child: TextField(
+                                  controller: passwordController,
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    border: const OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      borderSide: BorderSide(),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      borderSide: BorderSide(
+                                        color: AppColors.c2,
+                                      ),
+                                    ),
+                                    errorBorder: const OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                    labelText: 'password'.tr,
+                                    hintText: 'enter the password'.tr,
+                                    errorText: isPasswordIncorrect
+                                        ? 'password is incorrect'.tr
+                                        : null,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 20.0),
+                              ElevatedButton(
+                                onPressed: () {
+                                  // استدعاء تابع تسجيل الدخول
+                                  login();
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                    AppColors.c2,
+                                  ),
+                                ),
+                                child: Text(
+                                  'login'.tr,
+                                  style: const TextStyle(
+                                    color: AppColors.c3,
+                                  ),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(
+                                  bottom: 20,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 20.0),
-              ElevatedButton(
-                onPressed: () {
-                  // استدعاء تابع تسجيل الدخول
-                  login();
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    AppColors.c2,
-                  ),
-                ),
-                child: Text(
-                  'login'.tr,
-                  style: TextStyle(
-                    color: AppColors.c3,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: 20,
-                ),
-              )
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -172,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 child: Text(
                   'ok'.tr,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.c2,
                   ),
                 ),
@@ -200,7 +262,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 child: Text(
                   'ok'.tr,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.c2,
                   ),
                 ),

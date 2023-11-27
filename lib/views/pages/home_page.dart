@@ -8,7 +8,7 @@ import 'package:pharmacy_plus/views/widgets/my_app_bar.dart';
 import 'package:pharmacy_plus/views/widgets/my_text_field.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   static final controller = Get.put(MedicineController());
 
@@ -16,30 +16,36 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBar(),
-      floatingActionButton: Tooltip(
-        child: MaterialButton(
-          onPressed: () => Get.to(() => const AddMedicinePage()),
-          color: AppColors.c2,
-          elevation: 4,
-          height: 50,
-          shape: const CircleBorder(),
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-            size: 30,
+      floatingActionButton: Align(
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Tooltip(
+            message: "add medicine".tr,
+            child: MaterialButton(
+              onPressed: () => Get.to(() => const AddMedicinePage()),
+              color: AppColors.c2,
+              elevation: 4,
+              height: 50,
+              shape: const CircleBorder(),
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 30,
+              ),
+            ),
           ),
         ),
-        message: "add medicine".tr,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: ListView(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: FittedBox(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: Column(
+            children: [
+              const SizedBox(height: 50),
+              Row(
+                children: [
+                  FittedBox(
                     child: Text(
                       'medicines title'.tr,
                       style: const TextStyle(
@@ -49,23 +55,46 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-                const Spacer(flex: 5),
-                Expanded(
-                  flex: 5,
-                  child: MyTextField(
-                    height: 16,
-                    hint: 'search field'.tr,
-                    suffixIcon: const Icon(
-                      Icons.search,
+                  const Spacer(flex: 5),
+                  Expanded(
+                    flex: 5,
+                    child: MyTextField(
+                      height: 16,
+                      hint: 'search field'.tr,
+                      suffixIcon: const Icon(
+                        Icons.search,
+                      ),
+                      controller: controller.searchController,
                     ),
-                    controller: controller.searchController,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              const SizedBox(
+                width: 5000,
+                child: MedicinesTable(),
+              ),
+              const SizedBox(height: 30),
+              Container(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      AppColors.c2,
+                    ),
+                  ),
+                  child: Text(
+                    'next'.tr,
+                    style: const TextStyle(
+                      color: AppColors.c3,
+                    ),
                   ),
                 ),
-              ],
-            ),
-            const MedicinesTable(),
-          ],
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );
