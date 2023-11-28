@@ -59,6 +59,7 @@ class AppTranslation extends Translations {
           'change medication': 'Change Medication',
           'change_confirmation_message':
               'Do you really want to Change Medication?',
+          'payment status': 'Payment Status',
         },
         'ar_AR': {
           'فارماسي بلس': 'فارماسي بلس',
@@ -114,6 +115,7 @@ class AppTranslation extends Translations {
           'received': 'مستلمة',
           'change medication': 'تعديل الدواء',
           'change_confirmation_message': 'هل تريد حقا تعديل الدواء؟',
+          'payment status': 'حالة الدفع',
         },
       };
 }

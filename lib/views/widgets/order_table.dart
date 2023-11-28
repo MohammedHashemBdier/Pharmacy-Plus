@@ -49,6 +49,9 @@ class OrderTable extends StatelessWidget {
               label: MyCell('OrderDate'.tr),
             ),
             DataColumn(
+              label: MyCell('payment status'.tr),
+            ),
+            DataColumn(
               label: MyCell('details'.tr),
             ),
             DataColumn(
@@ -64,6 +67,8 @@ class OrderTable extends StatelessWidget {
                     DataCell(MyCell(order.Quantity.toString())),
                     DataCell(MyCell(order.Price.toString())),
                     DataCell(MyCell(order.OrderDate.toString())),
+                    // DataCell(MyCell(order.status.toString())),
+                    DataCell(MyCell(order.paymentstatus.toString())),
                     DataCell(
                       Center(
                         child: IconButton(

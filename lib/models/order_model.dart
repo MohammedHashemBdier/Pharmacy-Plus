@@ -4,6 +4,8 @@ class OrderModel {
   final int? Quantity;
   final DateTime? OrderDate;
   final double? Price;
+  final String? status;
+  final bool? paymentstatus;
 
   OrderModel({
     this.OrderID,
@@ -11,5 +13,7 @@ class OrderModel {
     this.Quantity,
     this.OrderDate,
     this.Price,
+    this.status,
+    this.paymentstatus
   });
 }
