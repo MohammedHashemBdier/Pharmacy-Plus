@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/controllers/medicine_controller.dart';
+import 'package:pharmacy_plus/views/pages/change_medicine_page.dart';
 
 class MedicinesTable extends StatelessWidget {
   const MedicinesTable({Key? key}) : super(key: key);
@@ -67,7 +68,9 @@ class MedicinesTable extends StatelessWidget {
                     DataCell(
                       Center(
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(const ChangeMedicinePage());
+                          },
                           icon: Tooltip(
                             message: 'edit'.tr,
                             child: const Icon(
