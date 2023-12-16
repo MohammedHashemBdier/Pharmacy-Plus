@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBar(),
       floatingActionButton: Tooltip(
+        message: "add medicine".tr,
         child: MaterialButton(
           onPressed: () => Get.to(() => const AddMedicinePage()),
           color: AppColors.c2,
@@ -29,7 +30,6 @@ class HomePage extends StatelessWidget {
             size: 30,
           ),
         ),
-        message: "add medicine".tr,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
