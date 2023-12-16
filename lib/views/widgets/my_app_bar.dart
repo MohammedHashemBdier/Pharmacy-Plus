@@ -4,6 +4,7 @@ import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/constants/images.dart';
 import 'package:pharmacy_plus/views/pages/home_page.dart';
 import 'package:pharmacy_plus/views/pages/login_page.dart';
+import 'package:pharmacy_plus/views/pages/order_list_page.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
@@ -52,6 +53,20 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Tooltip(
+          message: 'want list'.tr,
+          child: IconButton(
+            onPressed: () {
+              Get.to(
+                OrderList(),
+              );
+            },
+            icon: const Icon(
+              Icons.list_rounded,
+              color: AppColors.c3,
+            ),
+          ),
+        ),
+        Tooltip(
           message: 'notifications'.tr,
           child: IconButton(
             onPressed: () {},
@@ -73,16 +88,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
             icon: const Icon(
               Icons.language_sharp,
-              color: AppColors.c3,
-            ),
-          ),
-        ),
-        Tooltip(
-          message: 'want list'.tr,
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.list_rounded,
               color: AppColors.c3,
             ),
           ),

@@ -21,13 +21,15 @@ class PharmacyPlus extends StatelessWidget {
       locale: AppTranslation.fallbackLocale,
       fallbackLocale: AppTranslation.fallbackLocale,
       theme: ThemeData(
-        primaryColor: primary,
-        hintColor: AppColors.c2,
-        toggleableActiveColor: AppColors.c2,
-        focusColor: AppColors.c2,
-        cardColor: AppColors.c2,
-        primaryColorLight: primary,
-        selectedRowColor: AppColors.c2,
+        dataTableTheme: const DataTableThemeData(
+          dataTextStyle: TextStyle(fontSize: 16),
+          headingTextStyle: TextStyle(
+              color: AppColors.c3, fontSize: 18, fontWeight: FontWeight.bold),
+          dividerThickness: 0,
+          horizontalMargin: 10,
+          columnSpacing: 5,
+          headingRowHeight: 70,
+        ),
       ),
     );
   }

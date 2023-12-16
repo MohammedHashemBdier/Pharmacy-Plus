@@ -5,10 +5,9 @@ import 'package:pharmacy_plus/controllers/medicine_controller.dart';
 import 'package:pharmacy_plus/views/pages/add_medicine_page.dart';
 import 'package:pharmacy_plus/views/widgets/medicines_table.dart';
 import 'package:pharmacy_plus/views/widgets/my_app_bar.dart';
-import 'package:pharmacy_plus/views/widgets/my_text_field.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   static final controller = Get.put(MedicineController());
 
@@ -31,15 +30,15 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: ListView(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: FittedBox(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: Column(
+            children: [
+              const SizedBox(height: 50),
+              Row(
+                children: [
+                  FittedBox(
                     child: Text(
                       'medicines title'.tr,
                       style: const TextStyle(
@@ -49,23 +48,58 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-                const Spacer(flex: 5),
-                Expanded(
-                  flex: 5,
-                  child: MyTextField(
-                    height: 16,
-                    hint: 'search field'.tr,
-                    suffixIcon: const Icon(
-                      Icons.search,
+                  const Spacer(flex: 5),
+                  Expanded(
+                    flex: 5,
+                    child: TextField(
+                      controller: controller.searchController,
+                      decoration: InputDecoration(
+                        suffixIcon: const Icon(
+                          Icons.search,
+                        ),
+                        labelText: 'search'.tr,
+                        hintText: 'search field'.tr,
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide(),
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide(
+                            color: AppColors.c2,
+                          ),
+                        ),
+                      ),
                     ),
-                    controller: controller.searchController,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              const SizedBox(
+                width: 5000,
+                child: MedicinesTable(),
+              ),
+              const SizedBox(height: 30),
+              Container(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                      AppColors.c2,
+                    ),
+                  ),
+                  child: Text(
+                    'next'.tr,
+                    style: const TextStyle(
+                      color: AppColors.c3,
+                    ),
                   ),
                 ),
-              ],
-            ),
-            const MedicinesTable(),
-          ],
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

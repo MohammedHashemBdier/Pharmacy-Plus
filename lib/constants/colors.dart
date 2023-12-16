@@ -5,6 +5,7 @@ abstract class AppColors {
   static const Color c2 = Color(0xff4184C5);
   static const Color c3 = Colors.white;
   static const Color c4 = Color(0xff6F91B1);
+  static const Color c5 = Color(0xFF7BA7D5);
 }
 
 const MaterialColor primary = MaterialColor(_primaryPrimaryValue, <int, Color>{

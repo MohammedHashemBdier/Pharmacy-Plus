@@ -1,72 +1,105 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/controllers/medicine_controller.dart';
+import 'package:pharmacy_plus/views/pages/change_medicine_page.dart';
 
 class MedicinesTable extends StatelessWidget {
-  const MedicinesTable({super.key});
+  const MedicinesTable({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MedicineController>(
       init: MedicineController(),
-      builder: (controller) => DataTable(
-        columnSpacing: 0,
-        columns: [
-          DataColumn(
-            label: Expanded(child: MyCell('the scientific name'.tr)),
+      builder: (controller) => Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [AppColors.c5, AppColors.c3],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          DataColumn(
-            label: Expanded(child: MyCell('trade name'.tr)),
+        ),
+        child: DataTable(
+          border: TableBorder.all(
+            width: 5,
+            color: AppColors.c3,
           ),
-          DataColumn(
-            label: Expanded(child: MyCell('category'.tr)),
-          ),
-          DataColumn(
-            label: Expanded(child: MyCell('the manufacture company'.tr)),
-          ),
-          DataColumn(
-            label: Expanded(child: MyCell('quantity'.tr)),
-          ),
-          DataColumn(
-            label: Expanded(child: MyCell('expiration date'.tr)),
-          ),
-          DataColumn(
-            label: Expanded(child: MyCell('the price'.tr)),
-          ),
-          DataColumn(
-            label: Expanded(child: MyCell('edit'.tr)),
-          ),
-          DataColumn(
-            label: Expanded(child: MyCell('delete'.tr)),
-          ),
-        ],
-        rows: controller.filteredMedicines
-            .map((medicine) => DataRow(cells: [
-                  DataCell(MyCell(medicine.scientificName!)),
-                  DataCell(MyCell(medicine.commercialName!)),
-                  DataCell(MyCell(medicine.category!)),
-                  DataCell(MyCell(medicine.manufacturer!)),
-                  DataCell(MyCell(medicine.quantity!.toString())),
-                  DataCell(MyCell(medicine.expiryDate!.toString())),
-                  DataCell(MyCell(medicine.price!.toString())),
-                  DataCell(
-                    Center(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.edit),
+          columnSpacing: 0,
+          columns: [
+            DataColumn(
+              label: MyCell('the scientific name'.tr),
+            ),
+            DataColumn(
+              label: MyCell('trade name'.tr),
+            ),
+            DataColumn(
+              label: MyCell('category'.tr),
+            ),
+            DataColumn(
+              label: MyCell('the manufacture company'.tr),
+            ),
+            DataColumn(
+              label: MyCell('quantity'.tr),
+            ),
+            DataColumn(
+              label: MyCell('expiration date'.tr),
+            ),
+            DataColumn(
+              label: MyCell('the price'.tr),
+            ),
+            DataColumn(
+              label: MyCell('edit'.tr),
+            ),
+            DataColumn(
+              label: MyCell('delete'.tr),
+            ),
+          ],
+          rows: controller.filteredMedicines
+              .map(
+                (medicine) => DataRow(
+                  cells: [
+                    DataCell(MyCell(medicine.scientificName!)),
+                    DataCell(MyCell(medicine.commercialName!)),
+                    DataCell(MyCell(medicine.category!)),
+                    DataCell(MyCell(medicine.manufacturer!)),
+                    DataCell(MyCell(medicine.quantity!.toString())),
+                    DataCell(MyCell(medicine.expiryDate!.toString())),
+                    DataCell(MyCell(medicine.price!.toString())),
+                    DataCell(
+                      Center(
+                        child: IconButton(
+                          onPressed: () {
+                            Get.to(const ChangeMedicinePage());
+                          },
+                          icon: Tooltip(
+                            message: 'edit'.tr,
+                            child: const Icon(
+                              Icons.edit,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  DataCell(
-                    Center(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.delete),
+                    DataCell(
+                      Center(
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Tooltip(
+                            message: 'delete'.tr,
+                            child: const Icon(
+                              Icons.delete,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ]))
-            .toList(),
+                  ],
+                ),
+              )
+              .toList(),
+        ),
       ),
     );
   }
@@ -75,7 +108,7 @@ class MedicinesTable extends StatelessWidget {
 class MyCell extends StatelessWidget {
   final String text;
 
-  const MyCell(this.text, {super.key});
+  const MyCell(this.text, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +117,13 @@ class MyCell extends StatelessWidget {
       alignment: Alignment.center,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       child: FittedBox(
-        child: Text(text),
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.black,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }

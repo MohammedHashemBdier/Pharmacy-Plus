@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_plus/views/pages/home_page.dart';
-import 'package:pharmacy_plus/views/widgets/my_app_bar.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/views/widgets/my_text_field.dart';
 
-class AddMedicinePage extends StatelessWidget {
-  const AddMedicinePage({super.key});
+class ChangeMedicinePage extends StatelessWidget {
+  const ChangeMedicinePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(40),
         child: ListView(
@@ -168,8 +166,8 @@ class AddMedicinePage extends StatelessWidget {
                         readOnly: true,
                         decoration: InputDecoration(
                           focusColor: AppColors.c2,
-                          suffixIcon: Icon(Icons.calendar_today),
-                          contentPadding: EdgeInsets.symmetric(
+                          suffixIcon: const Icon(Icons.calendar_today),
+                          contentPadding: const EdgeInsets.symmetric(
                             vertical: 120,
                             horizontal: 20,
                           ),
@@ -204,7 +202,7 @@ class AddMedicinePage extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Get.off(HomePage());
+                      showLogoutConfirmationDialog();
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
@@ -212,8 +210,28 @@ class AddMedicinePage extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'add medication'.tr,
-                      style: TextStyle(
+                      'change medication'.tr,
+                      style: const TextStyle(
+                        color: AppColors.c3,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.off(const HomePage());
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        AppColors.c2,
+                      ),
+                    ),
+                    child: Text(
+                      'cancel'.tr,
+                      style: const TextStyle(
                         color: AppColors.c3,
                         fontSize: 20,
                       ),
@@ -242,4 +260,20 @@ Future<void> _selectDate(BuildContext context) async {
   if (picked != null && picked != selectedDate) {
     // إذا تم اختيار تاريخ، قم بتحديث القيمة في الحقل
   }
+}
+
+void showLogoutConfirmationDialog() {
+  Get.defaultDialog(
+    title: 'confirmation'.tr,
+    middleText: 'change_confirmation_message'.tr,
+    backgroundColor: Colors.white,
+    textConfirm: 'confirm'.tr,
+    buttonColor: AppColors.c2,
+    textCancel: 'cancel'.tr,
+    confirmTextColor: AppColors.c3,
+    cancelTextColor: AppColors.c2,
+    onConfirm: () {
+      Get.off(() => const HomePage());
+    },
+  );
 }
