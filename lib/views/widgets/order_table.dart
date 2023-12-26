@@ -9,27 +9,37 @@ enum OrderStatus {
   received,
 }
 
+enum PaymentStatus {
+  paid,
+  unpaid,
+}
+
 class OrderTable extends StatelessWidget {
   const OrderTable({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    OrderStatus currentStatus = OrderStatus.preparing;
+    OrderStatus ordercurrentStatus = OrderStatus.preparing;
+    PaymentStatus paymentcurrentStatus = PaymentStatus.paid;
 
     return GetBuilder<OrderController>(
       init: OrderController(),
       builder: (controller) => Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [AppColors.c5, AppColors.c3],
+            colors: [
+              AppColors.c5,
+              Color.fromARGB(0, 255, 255, 255),
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
         ),
         child: DataTable(
+          dividerThickness: 0,
           border: TableBorder.all(
-            width: 5,
-            color: AppColors.c3,
+            width: 50,
+            color: Colors.transparent,
           ),
           columnSpacing: 0,
           columns: [
@@ -67,12 +77,79 @@ class OrderTable extends StatelessWidget {
                     DataCell(MyCell(order.Quantity.toString())),
                     DataCell(MyCell(order.Price.toString())),
                     DataCell(MyCell(order.OrderDate.toString())),
-                    // DataCell(MyCell(order.status.toString())),
-                    DataCell(MyCell(order.paymentstatus.toString())),
+                    // DataCell(MyCell(order.paymentstatus.toString())),
                     DataCell(
                       Center(
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("change status".tr),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ListTile(
+                                        title: Text('paid'.tr),
+                                        leading: Radio<PaymentStatus>(
+                                          value: PaymentStatus.paid,
+                                          groupValue: paymentcurrentStatus,
+                                          onChanged: (PaymentStatus? value) {
+                                            if (value != null) {
+                                              paymentcurrentStatus = value;
+                                              Get.back();
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                      ListTile(
+                                        title: Text('unpaid'.tr),
+                                        leading: Radio<PaymentStatus>(
+                                          value: PaymentStatus.unpaid,
+                                          groupValue: paymentcurrentStatus,
+                                          onChanged: (PaymentStatus? value) {
+                                            if (value != null) {
+                                              paymentcurrentStatus = value;
+                                              Get.back();
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          icon: Tooltip(
+                            message: 'change status'.tr,
+                            child: Text(
+                              paymentcurrentStatus.toString().split('.').last,
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    DataCell(
+                      Center(
+                        child: IconButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('details'.tr),
+                                  content: const Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [],
+                                  ),
+                                );
+                              },
+                            );
+                          },
                           icon: Tooltip(
                             message: 'details'.tr,
                             child: const Icon(
@@ -91,7 +168,7 @@ class OrderTable extends StatelessWidget {
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text("change status".tr),
+                                  title: Text('change status'.tr),
                                   content: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -99,10 +176,10 @@ class OrderTable extends StatelessWidget {
                                         title: Text('preparing'.tr),
                                         leading: Radio<OrderStatus>(
                                           value: OrderStatus.preparing,
-                                          groupValue: currentStatus,
+                                          groupValue: ordercurrentStatus,
                                           onChanged: (OrderStatus? value) {
                                             if (value != null) {
-                                              currentStatus = value;
+                                              ordercurrentStatus = value;
                                               Get.back();
                                             }
                                           },
@@ -112,10 +189,10 @@ class OrderTable extends StatelessWidget {
                                         title: Text('sent'.tr),
                                         leading: Radio<OrderStatus>(
                                           value: OrderStatus.sent,
-                                          groupValue: currentStatus,
+                                          groupValue: ordercurrentStatus,
                                           onChanged: (OrderStatus? value) {
                                             if (value != null) {
-                                              currentStatus = value;
+                                              ordercurrentStatus = value;
                                               Get.back();
                                             }
                                           },
@@ -125,10 +202,10 @@ class OrderTable extends StatelessWidget {
                                         title: Text('received'.tr),
                                         leading: Radio<OrderStatus>(
                                           value: OrderStatus.received,
-                                          groupValue: currentStatus,
+                                          groupValue: ordercurrentStatus,
                                           onChanged: (OrderStatus? value) {
                                             if (value != null) {
-                                              currentStatus = value;
+                                              ordercurrentStatus = value;
                                               Get.back();
                                             }
                                           },
@@ -143,7 +220,7 @@ class OrderTable extends StatelessWidget {
                           icon: Tooltip(
                             message: 'change status'.tr,
                             child: Text(
-                              currentStatus.toString().split('.').last,
+                              ordercurrentStatus.toString().split('.').last,
                               style: const TextStyle(color: Colors.black),
                             ),
                           ),

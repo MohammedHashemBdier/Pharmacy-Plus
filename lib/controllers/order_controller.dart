@@ -25,7 +25,7 @@ class OrderController extends GetxController {
         Quantity: 30,
         status: 'preparing'.tr,
         OrderDate: DateTime(DateTime.may),
-        paymentstatus: true,
+        paymentstatus: 'paid'.tr,
       ),
       OrderModel(
         OrderID: 57373,
@@ -33,8 +33,7 @@ class OrderController extends GetxController {
         Price: 200000,
         Quantity: 95,
         status: 'sent'.tr,
-                paymentstatus: false,
-
+        paymentstatus: 'unpaid'.tr,
         OrderDate: DateTime(DateTime.may),
       ),
       OrderModel(
@@ -43,8 +42,7 @@ class OrderController extends GetxController {
         Price: 200,
         Quantity: 1,
         status: 'received'.tr,
-                paymentstatus: false,
-
+        paymentstatus: 'unpaid'.tr,
         OrderDate: DateTime(DateTime.may),
       ),
       OrderModel(
@@ -53,8 +51,7 @@ class OrderController extends GetxController {
         Price: 95200,
         Quantity: 18,
         status: 'preparing'.tr,
-                paymentstatus: true,
-
+        paymentstatus: 'paid'.tr,
         OrderDate: DateTime(DateTime.may),
       ),
       OrderModel(
@@ -63,8 +60,7 @@ class OrderController extends GetxController {
         Price: 50000,
         Quantity: 10,
         status: 'preparing'.tr,
-                paymentstatus: false,
-
+        paymentstatus: 'paid'.tr,
         OrderDate: DateTime(DateTime.may),
       ),
     ];

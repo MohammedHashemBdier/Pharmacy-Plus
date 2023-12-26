@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/controllers/medicine_controller.dart';
-import 'package:pharmacy_plus/views/pages/change_medicine_page.dart';
+import 'package:pharmacy_plus/views/widgets/my_text_field.dart';
 
 class MedicinesTable extends StatelessWidget {
   const MedicinesTable({Key? key}) : super(key: key);
@@ -14,16 +15,16 @@ class MedicinesTable extends StatelessWidget {
       builder: (controller) => Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [AppColors.c5, AppColors.c3],
+            colors: [
+              AppColors.c5,
+              Color.fromARGB(0, 255, 255, 255),
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
         ),
         child: DataTable(
-          border: TableBorder.all(
-            width: 5,
-            color: AppColors.c3,
-          ),
+          dividerThickness: 0,
           columnSpacing: 0,
           columns: [
             DataColumn(
@@ -69,7 +70,7 @@ class MedicinesTable extends StatelessWidget {
                       Center(
                         child: IconButton(
                           onPressed: () {
-                            Get.to(const ChangeMedicinePage());
+                            showChangeMedicineDialog(context);
                           },
                           icon: Tooltip(
                             message: 'edit'.tr,
@@ -84,7 +85,9 @@ class MedicinesTable extends StatelessWidget {
                     DataCell(
                       Center(
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDeletetConfirmationDialog();
+                          },
                           icon: Tooltip(
                             message: 'delete'.tr,
                             child: const Icon(
@@ -127,4 +130,241 @@ class MyCell extends StatelessWidget {
       ),
     );
   }
+}
+
+void showDeletetConfirmationDialog() {
+  Get.defaultDialog(
+    title: 'confirmation'.tr,
+    middleText: 'change_confirmation_message'.tr,
+    backgroundColor: Colors.white,
+    textConfirm: 'confirm'.tr,
+    buttonColor: AppColors.c2,
+    textCancel: 'cancel'.tr,
+    confirmTextColor: AppColors.c3,
+    cancelTextColor: AppColors.c2,
+    onConfirm: () {
+      Get.back();
+    },
+  );
+}
+
+void showChangeMedicineDialog(BuildContext context) {
+  void showChangeMedicineConfirmationDialog() {
+    Get.defaultDialog(
+      title: 'confirmation'.tr,
+      middleText: 'change_confirmation_message'.tr,
+      backgroundColor: Colors.white,
+      textConfirm: 'confirm'.tr,
+      buttonColor: AppColors.c2,
+      textCancel: 'cancel'.tr,
+      confirmTextColor: AppColors.c3,
+      cancelTextColor: AppColors.c2,
+      onConfirm: () {
+        Get.back();
+      },
+    );
+  }
+
+  Future<void> selectDate(BuildContext context) async {
+    DateTime selectedDate = DateTime.now();
+
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      // إذا تم اختيار تاريخ، قم بتحديث القيمة في الحقل
+    }
+  }
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Center(
+            child: Text(
+          'change medication'.tr,
+        )),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: 400,
+                height: 75,
+                child: MyTextField(
+                  height: 40,
+                  width: 370,
+                  hint: 'the scientific name'.tr.tr,
+                ),
+              ),
+              SizedBox(
+                width: 400,
+                height: 75,
+                child: MyTextField(
+                  height: 40,
+                  width: 370,
+                  hint: 'trade name'.tr,
+                ),
+              ),
+              SizedBox(
+                width: 400,
+                height: 75,
+                child: MyTextField(
+                  height: 40,
+                  width: 370,
+                  hint: 'category'.tr,
+                ),
+              ),
+              SizedBox(
+                width: 400,
+                height: 75,
+                child: MyTextField(
+                  height: 40,
+                  width: 370,
+                  hint: 'the manufacture company'.tr,
+                ),
+              ),
+              SizedBox(
+                width: 400,
+                height: 75,
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'please enter a value'.tr;
+                    }
+                    if (int.tryParse(value) == null) {
+                      return 'value must contain numbers only'.tr;
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    focusColor: AppColors.c2,
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 20,
+                    ),
+                    label: Text(
+                      'quantity'.tr,
+                    ),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderSide: BorderSide(
+                        color: AppColors.c2,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 400,
+                height: 75,
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'please enter a value'.tr;
+                    }
+                    if (int.tryParse(value) == null) {
+                      return 'value must contain numbers only'.tr;
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    focusColor: AppColors.c2,
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 20,
+                    ),
+                    label: Text(
+                      'the price'.tr,
+                    ),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderSide: BorderSide(
+                        color: AppColors.c2,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 400,
+                height: 75,
+                child: TextFormField(
+                  textDirection: TextDirection.rtl,
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    focusColor: AppColors.c2,
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 20,
+                    ),
+                    suffixIcon: const Icon(Icons.calendar_today),
+                    label: Text(
+                      'expiration date'.tr,
+                    ),
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderSide: BorderSide(
+                        color: AppColors.c2,
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    selectDate(context);
+                  },
+                ),
+              ),
+              SizedBox(
+                width: 400,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        showChangeMedicineConfirmationDialog();
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          AppColors.c2,
+                        ),
+                      ),
+                      child: Text(
+                        'change medication'.tr,
+                        style: const TextStyle(
+                          color: AppColors.c3,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }

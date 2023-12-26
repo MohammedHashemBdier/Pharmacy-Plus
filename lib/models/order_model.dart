@@ -5,7 +5,7 @@ class OrderModel {
   final DateTime? OrderDate;
   final double? Price;
   final String? status;
-  final bool? paymentstatus;
+  final String? paymentstatus;
 
   OrderModel({
     this.OrderID,

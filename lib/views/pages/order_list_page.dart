@@ -14,6 +14,7 @@ class OrderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: AppColors.c4,
         centerTitle: true,
@@ -101,59 +102,113 @@ class OrderList extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
-          child: Column(
-            children: [
-              const SizedBox(height: 50),
-              Row(
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/background_image.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Column(
                 children: [
-                  FittedBox(
-                    child: Text(
-                      'Orders'.tr,
-                      style: const TextStyle(
-                        color: AppColors.c2,
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const Spacer(flex: 5),
-                  Expanded(
-                    flex: 5,
-                    child: TextField(
-                      controller: controller.ordersearchController,
-                      decoration: InputDecoration(
-                        suffixIcon: const Icon(
-                          Icons.search,
-                        ),
-                        labelText: 'search'.tr,
-                        hintText: 'search field 2'.tr,
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          borderSide: BorderSide(),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          borderSide: BorderSide(
+                  const SizedBox(height: 100),
+                  Row(
+                    children: [
+                      FittedBox(
+                        child: Text(
+                          'Orders'.tr,
+                          style: const TextStyle(
                             color: AppColors.c2,
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                    ),
+                      const Spacer(flex: 5),
+                      Expanded(
+                        flex: 5,
+                        child: TextField(
+                          controller: controller.ordersearchController,
+                          decoration: InputDecoration(
+                            suffixIcon: const Icon(
+                              Icons.search,
+                            ),
+                            labelText: 'search'.tr,
+                            hintText: 'search field 2'.tr,
+                            border: const OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(),
+                            ),
+                            focusedBorder: const OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              borderSide: BorderSide(
+                                color: AppColors.c2,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                  const SizedBox(
+                    width: 5000,
+                    child: OrderTable(),
+                  ),
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: Alignment.bottomRight,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.c2,
+                            ),
+                          ),
+                          child: Text(
+                            'previous'.tr,
+                            style: const TextStyle(
+                              color: AppColors.c3,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 50),
+                      Container(
+                        alignment: Alignment.bottomLeft,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.c2,
+                            ),
+                          ),
+                          child: Text(
+                            'next'.tr,
+                            style: const TextStyle(
+                              color: AppColors.c3,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              const SizedBox(height: 30),
-              const SizedBox(
-                width: 5000,
-                child: OrderTable(),
-              ),
-              const SizedBox(height: 30),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -60,6 +60,12 @@ class AppTranslation extends Translations {
           'change_confirmation_message':
               'Do you really want to Change Medication?',
           'payment status': 'Payment Status',
+          'previous': 'Previous',
+          'delete_confirmation_message':
+              'Do you really want to Delet Medication?',
+          'paid': 'Paid',
+          'unpaid': 'Unpaid',
+          'AddMedicin_confirmation_message': 'Do you want to add medication?',
         },
         'ar_AR': {
           'فارماسي بلس': 'فارماسي بلس',
@@ -116,6 +122,11 @@ class AppTranslation extends Translations {
           'change medication': 'تعديل الدواء',
           'change_confirmation_message': 'هل تريد حقا تعديل الدواء؟',
           'payment status': 'حالة الدفع',
+          'previous': 'السابق',
+          'delete_confirmation_message': 'هل تريد حقا حذف الدواء؟',
+          'paid': 'مدفوع',
+          'unpaid': 'غير مدفوع',
+          'AddMedicin_confirmation_message': 'هل تريد إضافة الدواء؟',
         },
       };
 }
