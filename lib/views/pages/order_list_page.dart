@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/constants/images.dart';
@@ -56,49 +57,67 @@ class OrderList extends StatelessWidget {
           ),
         ),
         actions: [
-          Tooltip(
-            message: 'report'.tr,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.list_alt_rounded,
-                color: AppColors.c3,
+          PhysicalModel(
+            color: const Color.fromARGB(0, 255, 255, 255),
+            elevation: 10,
+            shadowColor: AppColors.c2.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(20),
+            child: Tooltip(
+              message: 'report'.tr,
+              child: IconButton(
+                onPressed: () {},
+                icon: const FaIcon(
+                  FontAwesomeIcons.fileAlt,
+                  color: AppColors.c3,
+                ),
               ),
             ),
           ),
-          Tooltip(
-            message: 'change the language'.tr,
-            child: IconButton(
-              onPressed: () {
-                if (Get.locale == const Locale('en')) {
-                  Get.updateLocale(const Locale('ar'));
-                } else {
-                  Get.updateLocale(const Locale('en'));
-                }
-              },
-              icon: const Icon(
-                Icons.language_sharp,
-                color: AppColors.c3,
+          PhysicalModel(
+            color: const Color.fromARGB(0, 255, 255, 255),
+            elevation: 10,
+            shadowColor: AppColors.c2.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(20),
+            child: Tooltip(
+              message: 'change the language'.tr,
+              child: IconButton(
+                onPressed: () {
+                  if (Get.locale == const Locale('en')) {
+                    Get.updateLocale(const Locale('ar'));
+                  } else {
+                    Get.updateLocale(const Locale('en'));
+                  }
+                },
+                icon: const FaIcon(
+                  FontAwesomeIcons.language,
+                  color: AppColors.c3,
+                ),
               ),
             ),
           ),
         ],
-        leading: Tooltip(
-          message: 'sign out'.tr,
-          child: IconButton(
-            onPressed: () {
-              showLogoutConfirmationDialog();
-            },
-            icon: const Icon(
-              Icons.power_off_outlined,
-              color: AppColors.c3,
+        leading: PhysicalModel(
+          color: const Color.fromARGB(0, 255, 255, 255),
+          elevation: 10,
+          shadowColor: AppColors.c2.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(20),
+          child: Tooltip(
+            message: 'sign out'.tr,
+            child: IconButton(
+              onPressed: () {
+                showLogoutConfirmationDialog();
+              },
+              icon: const FaIcon(
+                FontAwesomeIcons.doorOpen,
+                color: AppColors.c3,
+              ),
             ),
           ),
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
           ),
         ),
       ),
@@ -121,12 +140,18 @@ class OrderList extends StatelessWidget {
                   Row(
                     children: [
                       FittedBox(
-                        child: Text(
-                          'Orders'.tr,
-                          style: const TextStyle(
-                            color: AppColors.c2,
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold,
+                        child: PhysicalModel(
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                          elevation: 10,
+                          shadowColor: AppColors.c2.withOpacity(0.15),
+                          borderRadius: BorderRadius.circular(20),
+                          child: Text(
+                            'Orders'.tr,
+                            style: const TextStyle(
+                              color: AppColors.c2,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -169,17 +194,29 @@ class OrderList extends StatelessWidget {
                     children: [
                       Container(
                         alignment: Alignment.bottomRight,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.c2,
+                        child: PhysicalModel(
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                          elevation: 10,
+                          shadowColor: AppColors.c2.withOpacity(1),
+                          borderRadius: BorderRadius.circular(20),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                AppColors.c2,
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            'previous'.tr,
-                            style: const TextStyle(
-                              color: AppColors.c3,
+                            child: PhysicalModel(
+                              color: const Color.fromARGB(0, 255, 255, 255),
+                              elevation: 10,
+                              shadowColor: AppColors.c2.withOpacity(1),
+                              borderRadius: BorderRadius.circular(20),
+                              child: Text(
+                                'previous'.tr,
+                                style: const TextStyle(
+                                  color: AppColors.c3,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -187,17 +224,29 @@ class OrderList extends StatelessWidget {
                       const SizedBox(width: 50),
                       Container(
                         alignment: Alignment.bottomLeft,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.c2,
+                        child: PhysicalModel(
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                          elevation: 10,
+                          shadowColor: AppColors.c2.withOpacity(1),
+                          borderRadius: BorderRadius.circular(20),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                AppColors.c2,
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            'next'.tr,
-                            style: const TextStyle(
-                              color: AppColors.c3,
+                            child: PhysicalModel(
+                              color: const Color.fromARGB(0, 255, 255, 255),
+                              elevation: 10,
+                              shadowColor: AppColors.c2.withOpacity(1),
+                              borderRadius: BorderRadius.circular(20),
+                              child: Text(
+                                'next'.tr,
+                                style: const TextStyle(
+                                  color: AppColors.c3,
+                                ),
+                              ),
                             ),
                           ),
                         ),

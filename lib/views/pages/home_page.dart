@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/constants/images.dart';
@@ -21,118 +22,147 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.c4,
         centerTitle: true,
-        title: Center(
+        title: GestureDetector(
           child: Tooltip(
             message: 'home'.tr,
-            child: GestureDetector(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Spacer(
-                    flex: 25,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(
+                  flex: 25,
+                ),
+                Text(
+                  'فارماسي بلس'.tr,
+                  style: const TextStyle(
+                    color: AppColors.c3,
                   ),
-                  Text(
-                    'فارماسي بلس'.tr,
-                    style: const TextStyle(
-                      color: AppColors.c3,
-                    ),
-                  ),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                  Image.asset(
-                    AppImages.imagesLogo,
-                    width: 50,
-                    height: 50,
-                  ),
-                  const Spacer(
-                    flex: 25,
-                  ),
-                ],
-              ),
-              onTap: () {
-                Get.to(
-                  const HomePage(),
-                );
-              },
+                ),
+                const Spacer(
+                  flex: 1,
+                ),
+                Image.asset(
+                  AppImages.imagesLogo,
+                  width: 50,
+                  height: 50,
+                ),
+                const Spacer(
+                  flex: 25,
+                ),
+              ],
             ),
           ),
+          onTap: () {
+            Get.to(
+              const HomePage(),
+            );
+          },
         ),
         actions: [
-          Tooltip(
-            message: 'want list'.tr,
-            child: IconButton(
-              onPressed: () {
-                Get.to(
-                  const OrderList(),
-                );
-              },
-              icon: const Icon(
-                Icons.list_rounded,
-                color: AppColors.c3,
+          PhysicalModel(
+            color: const Color.fromARGB(0, 255, 255, 255),
+            elevation: 10,
+            shadowColor: AppColors.c2.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(20),
+            child: Tooltip(
+              message: 'want list'.tr,
+              child: IconButton(
+                onPressed: () {
+                  Get.to(
+                    const OrderList(),
+                  );
+                },
+                icon: const FaIcon(
+                  FontAwesomeIcons.shoppingBasket,
+                  color: AppColors.c3,
+                ),
               ),
             ),
           ),
-          Tooltip(
-            message: 'notifications'.tr,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications,
-                color: AppColors.c3,
+          PhysicalModel(
+            color: const Color.fromARGB(0, 255, 255, 255),
+            elevation: 10,
+            shadowColor: AppColors.c2.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(20),
+            child: Tooltip(
+              message: 'notifications'.tr,
+              child: IconButton(
+                onPressed: () {
+                },
+                icon: const Icon(
+                  Icons.notifications,
+                  color: AppColors.c3,
+                ),
               ),
             ),
           ),
-          Tooltip(
-            message: 'change the language'.tr,
-            child: IconButton(
-              onPressed: () {
-                if (Get.locale == const Locale('en')) {
-                  Get.updateLocale(const Locale('ar'));
-                } else {
-                  Get.updateLocale(const Locale('en'));
-                }
-              },
-              icon: const Icon(
-                Icons.language_sharp,
-                color: AppColors.c3,
+          PhysicalModel(
+            color: const Color.fromARGB(0, 255, 255, 255),
+            elevation: 10,
+            shadowColor: AppColors.c2.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(20),
+            child: Tooltip(
+              message: 'change the language'.tr,
+              child: IconButton(
+                onPressed: () {
+                  if (Get.locale == const Locale('en')) {
+                    Get.updateLocale(const Locale('ar'));
+                  } else {
+                    Get.updateLocale(const Locale('en'));
+                  }
+                },
+                icon: const FaIcon(
+                  FontAwesomeIcons.language, // رمز علم اللغة
+                  color: AppColors.c3,
+                ),
               ),
             ),
           ),
         ],
-        leading: Tooltip(
-          message: 'sign out'.tr,
-          child: IconButton(
-            onPressed: () {
-              showLogoutConfirmationDialog();
-            },
-            icon: const Icon(
-              Icons.power_off_outlined,
-              color: AppColors.c3,
+        leading: PhysicalModel(
+          color: const Color.fromARGB(0, 255, 255, 255),
+          elevation: 10,
+          shadowColor: AppColors.c2.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(20),
+          child: Tooltip(
+            message: 'sign out'.tr,
+            child: IconButton(
+              onPressed: () {
+                showLogoutConfirmationDialog();
+              },
+              icon: const FaIcon(
+                FontAwesomeIcons.doorOpen,
+                color: AppColors.c3,
+              ),
             ),
           ),
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
           ),
         ),
       ),
       floatingActionButton: Tooltip(
         message: "add medicine".tr,
-        child: MaterialButton(
-          onPressed: () {
-            showAddMedicineDialog(context);
-          },
-          color: AppColors.c2,
-          elevation: 4,
-          height: 50,
-          shape: const CircleBorder(),
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-            size: 30,
+        child: PhysicalModel(
+          color: const Color.fromARGB(0, 255, 255, 255),
+          elevation: 10,
+          shadowColor: AppColors.c2.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(20),
+          child: MaterialButton(
+            onPressed: () {
+              showAddMedicineDialog(context);
+            },
+            color: AppColors.c2,
+            elevation: 4,
+            height: 50,
+            shape: const CircleBorder(),
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
         ),
       ),
@@ -155,12 +185,18 @@ class HomePage extends StatelessWidget {
                   Row(
                     children: [
                       FittedBox(
-                        child: Text(
-                          'medicines title'.tr,
-                          style: const TextStyle(
-                            color: AppColors.c2,
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold,
+                        child: PhysicalModel(
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                          elevation: 10,
+                          shadowColor: AppColors.c2.withOpacity(0.15),
+                          borderRadius: BorderRadius.circular(20),
+                          child: Text(
+                            'medicines title'.tr,
+                            style: const TextStyle(
+                              color: AppColors.c2,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -203,17 +239,29 @@ class HomePage extends StatelessWidget {
                     children: [
                       Container(
                         alignment: Alignment.bottomRight,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.c2,
+                        child: PhysicalModel(
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                          elevation: 10,
+                          shadowColor: AppColors.c2.withOpacity(1),
+                          borderRadius: BorderRadius.circular(20),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                AppColors.c2,
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            'previous'.tr,
-                            style: const TextStyle(
-                              color: AppColors.c3,
+                            child: PhysicalModel(
+                              color: const Color.fromARGB(0, 255, 255, 255),
+                              elevation: 10,
+                              shadowColor: AppColors.c2.withOpacity(1),
+                              borderRadius: BorderRadius.circular(20),
+                              child: Text(
+                                'previous'.tr,
+                                style: const TextStyle(
+                                  color: AppColors.c3,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -221,17 +269,29 @@ class HomePage extends StatelessWidget {
                       const SizedBox(width: 50),
                       Container(
                         alignment: Alignment.bottomLeft,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.c2,
+                        child: PhysicalModel(
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                          elevation: 10,
+                          shadowColor: AppColors.c2.withOpacity(1),
+                          borderRadius: BorderRadius.circular(20),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                AppColors.c2,
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            'next'.tr,
-                            style: const TextStyle(
-                              color: AppColors.c3,
+                            child: PhysicalModel(
+                              color: const Color.fromARGB(0, 255, 255, 255),
+                              elevation: 10,
+                              shadowColor: AppColors.c2.withOpacity(1),
+                              borderRadius: BorderRadius.circular(20),
+                              child: Text(
+                                'next'.tr,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -481,3 +541,4 @@ void showAddMedicineDialog(BuildContext context) {
     },
   );
 }
+
