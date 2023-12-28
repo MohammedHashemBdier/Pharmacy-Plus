@@ -27,88 +27,142 @@ class MedicinesTable extends StatelessWidget {
             topRight: Radius.circular(20),
           ),
         ),
-        child: DataTable(
-          dividerThickness: 0,
-          columnSpacing: 0,
-          columns: [
-            DataColumn(
-              label: MyCell('the scientific name'.tr),
-            ),
-            DataColumn(
-              label: MyCell('trade name'.tr),
-            ),
-            DataColumn(
-              label: MyCell('category'.tr),
-            ),
-            DataColumn(
-              label: MyCell('the manufacture company'.tr),
-            ),
-            DataColumn(
-              label: MyCell('quantity'.tr),
-            ),
-            DataColumn(
-              label: MyCell('expiration date'.tr),
-            ),
-            DataColumn(
-              label: MyCell('the price'.tr),
-            ),
-            DataColumn(
-              label: MyCell('edit'.tr),
-            ),
-            DataColumn(
-              label: MyCell('delete'.tr),
-            ),
-          ],
-          rows: controller.filteredMedicines
-              .map(
-                (medicine) => DataRow(
-                  cells: [
-                    DataCell(MyCell(medicine.scientificName!)),
-                    DataCell(MyCell(medicine.commercialName!)),
-                    DataCell(MyCell(medicine.category!)),
-                    DataCell(MyCell(medicine.manufacturer!)),
-                    DataCell(MyCell(medicine.quantity!.toString())),
-                    DataCell(MyCell(medicine.expiryDate!.toString())),
-                    DataCell(MyCell(medicine.price!.toString())),
-                    DataCell(
-                      Center(
-                        child: IconButton(
-                          onPressed: () {
-                            showChangeMedicineDialog(context);
-                          },
-                          icon: Tooltip(
-                            message: 'edit'.tr,
-                            child: const Icon(
-                              Icons.edit,
-                              color: Colors.black,
+        child: SlideInTable(
+          dataTable: DataTable(
+            dividerThickness: 0,
+            columnSpacing: 0,
+            columns: [
+              DataColumn(
+                label: MyCell('the scientific name'.tr),
+              ),
+              DataColumn(
+                label: MyCell('trade name'.tr),
+              ),
+              DataColumn(
+                label: MyCell('category'.tr),
+              ),
+              DataColumn(
+                label: MyCell('the manufacture company'.tr),
+              ),
+              DataColumn(
+                label: MyCell('quantity'.tr),
+              ),
+              DataColumn(
+                label: MyCell('expiration date'.tr),
+              ),
+              DataColumn(
+                label: MyCell('the price'.tr),
+              ),
+              DataColumn(
+                label: MyCell('edit'.tr),
+              ),
+              DataColumn(
+                label: MyCell('delete'.tr),
+              ),
+            ],
+            rows: controller.filteredMedicines
+                .map(
+                  (medicine) => DataRow(
+                    cells: [
+                      DataCell(MyCell(medicine.scientificName!)),
+                      DataCell(MyCell(medicine.commercialName!)),
+                      DataCell(MyCell(medicine.category!)),
+                      DataCell(MyCell(medicine.manufacturer!)),
+                      DataCell(MyCell(medicine.quantity!.toString())),
+                      DataCell(MyCell(medicine.expiryDate!.toString())),
+                      DataCell(MyCell(medicine.price!.toString())),
+                      DataCell(
+                        Center(
+                          child: IconButton(
+                            onPressed: () {
+                              showChangeMedicineDialog(context);
+                            },
+                            icon: Tooltip(
+                              message: 'edit'.tr,
+                              child: const Icon(
+                                Icons.edit,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    DataCell(
-                      Center(
-                        child: IconButton(
-                          onPressed: () {
-                            showDeletetConfirmationDialog();
-                          },
-                          icon: Tooltip(
-                            message: 'delete'.tr,
-                            child: const Icon(
-                              Icons.delete,
-                              color: Colors.black,
+                      DataCell(
+                        Center(
+                          child: IconButton(
+                            onPressed: () {
+                              showDeletetConfirmationDialog();
+                            },
+                            icon: Tooltip(
+                              message: 'delete'.tr,
+                              child: const Icon(
+                                Icons.delete,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              )
-              .toList(),
+                    ],
+                  ),
+                )
+                .toList(),
+          ),
         ),
       ),
     );
+  }
+}
+
+class SlideInTable extends StatefulWidget {
+  final DataTable dataTable;
+
+  const SlideInTable({Key? key, required this.dataTable}) : super(key: key);
+
+  @override
+  _SlideInTableState createState() => _SlideInTableState();
+}
+
+class _SlideInTableState extends State<SlideInTable>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1500),
+      vsync: this,
+    );
+
+    _animation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+
+    _controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Transform.translate(
+          offset: Offset(0, 500 * (1 - _animation.value)),
+          child: Opacity(
+            opacity: _animation.value,
+            child: widget.dataTable,
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
 

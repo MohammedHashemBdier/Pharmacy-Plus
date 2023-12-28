@@ -84,23 +84,6 @@ class HomePage extends StatelessWidget {
             shadowColor: AppColors.c2.withOpacity(0.5),
             borderRadius: BorderRadius.circular(20),
             child: Tooltip(
-              message: 'notifications'.tr,
-              child: IconButton(
-                onPressed: () {
-                },
-                icon: const Icon(
-                  Icons.notifications,
-                  color: AppColors.c3,
-                ),
-              ),
-            ),
-          ),
-          PhysicalModel(
-            color: const Color.fromARGB(0, 255, 255, 255),
-            elevation: 10,
-            shadowColor: AppColors.c2.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(20),
-            child: Tooltip(
               message: 'change the language'.tr,
               child: IconButton(
                 onPressed: () {
@@ -541,4 +524,3 @@ void showAddMedicineDialog(BuildContext context) {
     },
   );
 }
-
