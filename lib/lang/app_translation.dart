@@ -143,7 +143,7 @@ class AppTranslation extends Translations {
           'Number of Orders': 'عدد الطلبات',
           'Top 6 Selling Medicines': 'اكثر 6 ادوية مبيعاً',
           'View All': 'اظهر الكل',
-          'Top 6 Searched Medicines': 'اكثر ست ادوية بحثاً',
+          'Top 6 Searched Medicines': 'اكثر 6 ادوية بحثاً',
           'All Orders': 'كل المبيعات',
         },
       };
