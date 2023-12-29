@@ -160,8 +160,10 @@ class _LoginPageState extends State<LoginPage> {
                                         child: Text(
                                           // نص توجيه المستخدم لإدخال كلمة المرور
                                           'enter the password'.tr,
-                                          style:
-                                              const TextStyle(fontSize: 18.0),
+                                          style: const TextStyle(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ),
                                       const SizedBox(height: 10.0),
@@ -268,6 +270,7 @@ class _LoginPageState extends State<LoginPage> {
     if (passwordController.text == '1234') {
       setState(() {
         isPasswordIncorrect = false;
+        Get.off(const HomePage());
       });
 
       // إظهار الرسالة عند نجاح تسجيل الدخول
@@ -280,7 +283,7 @@ class _LoginPageState extends State<LoginPage> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Get.off(const HomePage());
+                  Navigator.of(context).pop();
                 },
                 child: Text(
                   'ok'.tr,

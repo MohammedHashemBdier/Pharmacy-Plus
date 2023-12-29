@@ -245,6 +245,10 @@ void showChangeMedicineDialog(BuildContext context) {
         title: Center(
             child: Text(
           'change medication'.tr,
+          style: const TextStyle(
+            color: AppColors.c4,
+            fontWeight: FontWeight.bold,
+          ),
         )),
         content: SingleChildScrollView(
           child: Column(

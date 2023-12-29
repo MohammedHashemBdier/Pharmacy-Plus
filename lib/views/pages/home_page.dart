@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/constants/images.dart';
 import 'package:pharmacy_plus/controllers/medicine_controller.dart';
@@ -183,6 +184,17 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        width: 200,
+                        height: 100,
+                        child: LottieBuilder.asset(
+                          'assets/lottie/medicines title.json',
+                          repeat: true,
+                          reverse: true,
+                          animate: true,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                       const Spacer(flex: 5),
                       Expanded(
                         flex: 5,
@@ -217,69 +229,74 @@ class HomePage extends StatelessWidget {
                     child: MedicinesTable(),
                   ),
                   const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        alignment: Alignment.bottomRight,
-                        child: PhysicalModel(
-                          color: const Color.fromARGB(0, 255, 255, 255),
-                          elevation: 10,
-                          shadowColor: AppColors.c2.withOpacity(1),
-                          borderRadius: BorderRadius.circular(20),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.c2,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.bottomRight,
+                          child: PhysicalModel(
+                            color: const Color.fromARGB(0, 255, 255, 255),
+                            elevation: 10,
+                            shadowColor: AppColors.c2.withOpacity(1),
+                            borderRadius: BorderRadius.circular(20),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  AppColors.c2,
+                                ),
                               ),
-                            ),
-                            child: PhysicalModel(
-                              color: const Color.fromARGB(0, 255, 255, 255),
-                              elevation: 10,
-                              shadowColor: AppColors.c2.withOpacity(1),
-                              borderRadius: BorderRadius.circular(20),
-                              child: Text(
-                                'previous'.tr,
-                                style: const TextStyle(
-                                  color: AppColors.c3,
+                              child: PhysicalModel(
+                                color: const Color.fromARGB(0, 255, 255, 255),
+                                elevation: 10,
+                                shadowColor: AppColors.c2.withOpacity(1),
+                                borderRadius: BorderRadius.circular(20),
+                                child: Text(
+                                  'previous'.tr,
+                                  style: const TextStyle(
+                                    color: AppColors.c3,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 50),
-                      Container(
-                        alignment: Alignment.bottomLeft,
-                        child: PhysicalModel(
-                          color: const Color.fromARGB(0, 255, 255, 255),
-                          elevation: 10,
-                          shadowColor: AppColors.c2.withOpacity(1),
-                          borderRadius: BorderRadius.circular(20),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.c2,
+                        const SizedBox(width: 50),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          child: PhysicalModel(
+                            color: const Color.fromARGB(0, 255, 255, 255),
+                            elevation: 10,
+                            shadowColor: AppColors.c2.withOpacity(1),
+                            borderRadius: BorderRadius.circular(20),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  AppColors.c2,
+                                ),
                               ),
-                            ),
-                            child: PhysicalModel(
-                              color: const Color.fromARGB(0, 255, 255, 255),
-                              elevation: 10,
-                              shadowColor: AppColors.c2.withOpacity(1),
-                              borderRadius: BorderRadius.circular(20),
-                              child: Text(
-                                'next'.tr,
-                                style: const TextStyle(
-                                  color: Colors.white,
+                              child: PhysicalModel(
+                                color: const Color.fromARGB(0, 255, 255, 255),
+                                elevation: 10,
+                                shadowColor: AppColors.c2.withOpacity(1),
+                                borderRadius: BorderRadius.circular(20),
+                                child: Text(
+                                  'next'.tr,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -343,7 +360,14 @@ void showAddMedicineDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Center(child: Text("add medicine".tr)),
+        title: Center(
+            child: Text(
+          "add medicine".tr,
+          style: const TextStyle(
+            color: AppColors.c4,
+            fontWeight: FontWeight.bold,
+          ),
+        )),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

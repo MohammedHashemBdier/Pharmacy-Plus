@@ -91,7 +91,14 @@ class OrderTable extends StatelessWidget {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: Text("change status".tr),
+                                    title: Center(
+                                        child: Text(
+                                      "change status".tr,
+                                      style: const TextStyle(
+                                        color: AppColors.c4,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )),
                                     content: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -146,10 +153,23 @@ class OrderTable extends StatelessWidget {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: Text('details'.tr),
-                                    content: const Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [],
+                                    title: Center(
+                                      child: Text(
+                                        'details'.tr,
+                                        style: const TextStyle(
+                                          color: AppColors.c4,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    content: const SingleChildScrollView(
+                                      child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            SizedBox(
+                                              height: 500,
+                                            ),
+                                          ]),
                                     ),
                                   );
                                 },
@@ -173,7 +193,14 @@ class OrderTable extends StatelessWidget {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: Text('change status'.tr),
+                                    title: Center(
+                                        child: Text(
+                                      'change status'.tr,
+                                      style: const TextStyle(
+                                        color: AppColors.c4,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )),
                                     content: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -261,7 +288,7 @@ class _SlideInTableState extends State<SlideInTable>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds : 1500),
+      duration: const Duration(milliseconds: 1500),
       vsync: this,
     );
 

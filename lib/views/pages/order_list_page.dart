@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pharmacy_plus/constants/colors.dart';
 import 'package:pharmacy_plus/constants/images.dart';
 import 'package:pharmacy_plus/controllers/order_controller.dart';
 import 'package:pharmacy_plus/views/pages/home_page.dart';
 import 'package:pharmacy_plus/views/pages/login_page.dart';
+import 'package:pharmacy_plus/views/pages/report_Page.dart';
 import 'package:pharmacy_plus/views/widgets/order_table.dart';
 
 class OrderList extends StatelessWidget {
@@ -65,7 +67,9 @@ class OrderList extends StatelessWidget {
             child: Tooltip(
               message: 'report'.tr,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showReportDialog(context);
+                },
                 icon: const FaIcon(
                   FontAwesomeIcons.fileAlt,
                   color: AppColors.c3,
@@ -155,6 +159,16 @@ class OrderList extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        width: 200,
+                        height: 100,
+                        child: LottieBuilder.asset(
+                          'assets/lottie/Orders Lottie.json',
+                          repeat: true,
+                          animate: true,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                       const Spacer(flex: 5),
                       Expanded(
                         flex: 5,
@@ -189,69 +203,74 @@ class OrderList extends StatelessWidget {
                     child: OrderTable(),
                   ),
                   const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        alignment: Alignment.bottomRight,
-                        child: PhysicalModel(
-                          color: const Color.fromARGB(0, 255, 255, 255),
-                          elevation: 10,
-                          shadowColor: AppColors.c2.withOpacity(1),
-                          borderRadius: BorderRadius.circular(20),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.c2,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.bottomRight,
+                          child: PhysicalModel(
+                            color: const Color.fromARGB(0, 255, 255, 255),
+                            elevation: 10,
+                            shadowColor: AppColors.c2.withOpacity(1),
+                            borderRadius: BorderRadius.circular(20),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  AppColors.c2,
+                                ),
                               ),
-                            ),
-                            child: PhysicalModel(
-                              color: const Color.fromARGB(0, 255, 255, 255),
-                              elevation: 10,
-                              shadowColor: AppColors.c2.withOpacity(1),
-                              borderRadius: BorderRadius.circular(20),
-                              child: Text(
-                                'previous'.tr,
-                                style: const TextStyle(
-                                  color: AppColors.c3,
+                              child: PhysicalModel(
+                                color: const Color.fromARGB(0, 255, 255, 255),
+                                elevation: 10,
+                                shadowColor: AppColors.c2.withOpacity(1),
+                                borderRadius: BorderRadius.circular(20),
+                                child: Text(
+                                  'previous'.tr,
+                                  style: const TextStyle(
+                                    color: AppColors.c3,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 50),
-                      Container(
-                        alignment: Alignment.bottomLeft,
-                        child: PhysicalModel(
-                          color: const Color.fromARGB(0, 255, 255, 255),
-                          elevation: 10,
-                          shadowColor: AppColors.c2.withOpacity(1),
-                          borderRadius: BorderRadius.circular(20),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.c2,
+                        const SizedBox(width: 50),
+                        Container(
+                          alignment: Alignment.bottomLeft,
+                          child: PhysicalModel(
+                            color: const Color.fromARGB(0, 255, 255, 255),
+                            elevation: 10,
+                            shadowColor: AppColors.c2.withOpacity(1),
+                            borderRadius: BorderRadius.circular(20),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                  AppColors.c2,
+                                ),
                               ),
-                            ),
-                            child: PhysicalModel(
-                              color: const Color.fromARGB(0, 255, 255, 255),
-                              elevation: 10,
-                              shadowColor: AppColors.c2.withOpacity(1),
-                              borderRadius: BorderRadius.circular(20),
-                              child: Text(
-                                'next'.tr,
-                                style: const TextStyle(
-                                  color: AppColors.c3,
+                              child: PhysicalModel(
+                                color: const Color.fromARGB(0, 255, 255, 255),
+                                elevation: 10,
+                                shadowColor: AppColors.c2.withOpacity(1),
+                                borderRadius: BorderRadius.circular(20),
+                                child: Text(
+                                  'next'.tr,
+                                  style: const TextStyle(
+                                    color: AppColors.c3,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -261,6 +280,141 @@ class OrderList extends StatelessWidget {
       ),
     );
   }
+}
+
+void showReportDialog(BuildContext context) {
+  Future<void> selectDateFROM(BuildContext context) async {
+    DateTime selectedDate = DateTime.now();
+
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      // إذا تم اختيار تاريخ، قم بتحديث القيمة في الحقل
+    }
+  }
+
+  Future<void> selectDateTO(BuildContext context) async {
+    DateTime selectedDate = DateTime.now();
+
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      // إذا تم اختيار تاريخ، قم بتحديث القيمة في الحقل
+    }
+  }
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Center(
+          child: Text(
+            'report'.tr,
+            style: const TextStyle(
+              color: AppColors.c4,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: TextFormField(
+                textDirection: TextDirection.rtl,
+                readOnly: true,
+                decoration: InputDecoration(
+                  focusColor: AppColors.c2,
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: 20,
+                  ),
+                  suffixIcon: const Icon(Icons.calendar_today),
+                  label: Text(
+                    'from'.tr,
+                  ),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderSide: BorderSide(
+                      color: AppColors.c2,
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  selectDateFROM(context);
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: TextFormField(
+                textDirection: TextDirection.rtl,
+                readOnly: true,
+                decoration: InputDecoration(
+                  focusColor: AppColors.c2,
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: 20,
+                  ),
+                  suffixIcon: const Icon(Icons.calendar_today),
+                  label: Text(
+                    'to'.tr,
+                  ),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  focusedBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderSide: BorderSide(
+                      color: AppColors.c2,
+                    ),
+                  ),
+                ),
+                onTap: () {
+                  selectDateTO(context);
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Get.to(const ReportPage());
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    AppColors.c2,
+                  ),
+                ),
+                child: Text(
+                  "show".tr,
+                  style: const TextStyle(
+                    color: AppColors.c3,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }
 
 void showLogoutConfirmationDialog() {
