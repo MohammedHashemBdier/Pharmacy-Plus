@@ -21,6 +21,7 @@ class PharmacyPlus extends StatelessWidget {
       locale: AppTranslation.fallbackLocale,
       fallbackLocale: AppTranslation.fallbackLocale,
       theme: ThemeData(
+        primarySwatch: Colors.blue,
         dataTableTheme: const DataTableThemeData(
           dataTextStyle: TextStyle(fontSize: 16),
           headingTextStyle: TextStyle(
