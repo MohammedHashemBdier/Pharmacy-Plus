@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: AppColors.c4,
+        backgroundColor: AppColors.c5,
         centerTitle: true,
         title: GestureDetector(
           child: Tooltip(
@@ -153,6 +153,8 @@ class HomePage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
+             width: double.infinity,
+            height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/background_image.jpg'),
@@ -169,18 +171,12 @@ class HomePage extends StatelessWidget {
                   Row(
                     children: [
                       FittedBox(
-                        child: PhysicalModel(
-                          color: const Color.fromARGB(0, 255, 255, 255),
-                          elevation: 10,
-                          shadowColor: AppColors.c2.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(20),
-                          child: Text(
-                            'medicines title'.tr,
-                            style: const TextStyle(
-                              color: AppColors.c2,
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        child: Text(
+                          'medicines title'.tr,
+                          style: const TextStyle(
+                            color: AppColors.c2,
+                            fontSize: 50,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),

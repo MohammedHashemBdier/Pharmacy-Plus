@@ -75,6 +75,7 @@ class AppTranslation extends Translations {
           'View All': 'View All',
           'Top 6 Searched Medicines': 'Top 6 Searched Medicines',
           'All Orders': 'All Orders',
+          'back': 'Back',
         },
         'ar_AR': {
           'فارماسي بلس': 'فارماسي بلس',
@@ -145,6 +146,7 @@ class AppTranslation extends Translations {
           'View All': 'اظهر الكل',
           'Top 6 Searched Medicines': 'اكثر 6 ادوية بحثاً',
           'All Orders': 'كل المبيعات',
+          'back': 'رجوع',
         },
       };
 }

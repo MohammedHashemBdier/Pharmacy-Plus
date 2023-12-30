@@ -23,6 +23,8 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Container(
+            width: double.infinity,
+            height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Loginbackground_image.jpg'),
