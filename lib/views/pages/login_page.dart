@@ -108,6 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                                         'فارماسي بلس'.tr,
                                         style: const TextStyle(
                                           color: Colors.black,
+                                          fontWeight: FontWeight.bold,
                                           fontSize: 30,
                                         ),
                                       ),

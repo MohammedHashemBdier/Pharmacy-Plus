@@ -35,6 +35,7 @@ class OrderList extends StatelessWidget {
                     'فارماسي بلس'.tr,
                     style: const TextStyle(
                       color: AppColors.c3,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Spacer(
@@ -128,7 +129,7 @@ class OrderList extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-             width: double.infinity,
+            width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
