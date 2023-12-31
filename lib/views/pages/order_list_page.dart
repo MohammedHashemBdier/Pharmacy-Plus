@@ -36,6 +36,9 @@ class OrderList extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  const SizedBox(
+                    width: 10,
+                  ),
                   Image.asset(
                     AppImages.imagesLogo,
                     width: 50,
