@@ -286,8 +286,8 @@ void showReportDialog(BuildContext context) {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2101),
+      firstDate: DateTime(2023),
+      lastDate: DateTime.now(),
     );
 
     if (picked != null && picked != selectedDate) {
@@ -301,8 +301,8 @@ void showReportDialog(BuildContext context) {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2101),
+      firstDate: DateTime(2023),
+      lastDate: DateTime.now(),
     );
 
     if (picked != null && picked != selectedDate) {
