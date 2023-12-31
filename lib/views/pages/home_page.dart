@@ -23,63 +23,33 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.c5,
         centerTitle: true,
-        title: GestureDetector(
-          child: Tooltip(
-            message: 'home'.tr,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Spacer(
-                  flex: 25,
-                ),
-                Text(
-                  'فارماسي بلس'.tr,
-                  style: const TextStyle(
-                    color: AppColors.c3,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Spacer(
-                  flex: 1,
-                ),
-                Image.asset(
-                  AppImages.imagesLogo,
-                  width: 50,
-                  height: 50,
-                ),
-                const Spacer(
-                  flex: 25,
-                ),
-              ],
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Spacer(
+              flex: 25,
             ),
-          ),
-          onTap: () {
-            Get.to(
-              const HomePage(),
-            );
-          },
-        ),
-        actions: [
-          PhysicalModel(
-            color: const Color.fromARGB(0, 255, 255, 255),
-            elevation: 10,
-            shadowColor: AppColors.c2.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(20),
-            child: Tooltip(
-              message: 'want list'.tr,
-              child: IconButton(
-                onPressed: () {
-                  Get.to(
-                    const OrderList(),
-                  );
-                },
-                icon: const FaIcon(
-                  FontAwesomeIcons.shoppingBasket,
-                  color: AppColors.c3,
-                ),
+            Text(
+              'فارماسي بلس'.tr,
+              style: const TextStyle(
+                color: AppColors.c3,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
+            const Spacer(
+              flex: 1,
+            ),
+            Image.asset(
+              AppImages.imagesLogo,
+              width: 50,
+              height: 50,
+            ),
+            const Spacer(
+              flex: 25,
+            ),
+          ],
+        ),
+        actions: [
           PhysicalModel(
             color: const Color.fromARGB(0, 255, 255, 255),
             elevation: 10,
@@ -102,6 +72,24 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
+          PhysicalModel(
+            color: const Color.fromARGB(0, 255, 255, 255),
+            elevation: 10,
+            shadowColor: AppColors.c2.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(20),
+            child: Tooltip(
+              message: 'sign out'.tr,
+              child: IconButton(
+                onPressed: () {
+                  showLogoutConfirmationDialog();
+                },
+                icon: const FaIcon(
+                  FontAwesomeIcons.doorOpen,
+                  color: AppColors.c3,
+                ),
+              ),
+            ),
+          ),
         ],
         leading: PhysicalModel(
           color: const Color.fromARGB(0, 255, 255, 255),
@@ -109,13 +97,15 @@ class HomePage extends StatelessWidget {
           shadowColor: AppColors.c2.withOpacity(0.5),
           borderRadius: BorderRadius.circular(20),
           child: Tooltip(
-            message: 'sign out'.tr,
+            message: 'want list'.tr,
             child: IconButton(
               onPressed: () {
-                showLogoutConfirmationDialog();
+                Get.to(
+                  const OrderList(),
+                );
               },
               icon: const FaIcon(
-                FontAwesomeIcons.doorOpen,
+                FontAwesomeIcons.shoppingBasket,
                 color: AppColors.c3,
               ),
             ),

@@ -66,24 +66,6 @@ class OrderList extends StatelessWidget {
             shadowColor: AppColors.c2.withOpacity(0.5),
             borderRadius: BorderRadius.circular(20),
             child: Tooltip(
-              message: 'report'.tr,
-              child: IconButton(
-                onPressed: () {
-                  showReportDialog(context);
-                },
-                icon: const FaIcon(
-                  FontAwesomeIcons.fileAlt,
-                  color: AppColors.c3,
-                ),
-              ),
-            ),
-          ),
-          PhysicalModel(
-            color: const Color.fromARGB(0, 255, 255, 255),
-            elevation: 10,
-            shadowColor: AppColors.c2.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(20),
-            child: Tooltip(
               message: 'change the language'.tr,
               child: IconButton(
                 onPressed: () {
@@ -100,6 +82,24 @@ class OrderList extends StatelessWidget {
               ),
             ),
           ),
+          PhysicalModel(
+            color: const Color.fromARGB(0, 255, 255, 255),
+            elevation: 10,
+            shadowColor: AppColors.c2.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(20),
+            child: Tooltip(
+              message: 'sign out'.tr,
+              child: IconButton(
+                onPressed: () {
+                  showLogoutConfirmationDialog();
+                },
+                icon: const FaIcon(
+                  FontAwesomeIcons.doorOpen,
+                  color: AppColors.c3,
+                ),
+              ),
+            ),
+          ),
         ],
         leading: PhysicalModel(
           color: const Color.fromARGB(0, 255, 255, 255),
@@ -107,13 +107,13 @@ class OrderList extends StatelessWidget {
           shadowColor: AppColors.c2.withOpacity(0.5),
           borderRadius: BorderRadius.circular(20),
           child: Tooltip(
-            message: 'sign out'.tr,
+            message: 'report'.tr,
             child: IconButton(
               onPressed: () {
-                showLogoutConfirmationDialog();
+                showReportDialog(context);
               },
               icon: const FaIcon(
-                FontAwesomeIcons.doorOpen,
+                FontAwesomeIcons.fileAlt,
                 color: AppColors.c3,
               ),
             ),
