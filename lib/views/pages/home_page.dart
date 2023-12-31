@@ -25,10 +25,8 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            const Spacer(
-              flex: 25,
-            ),
             Text(
               'فارماسي بلس'.tr,
               style: const TextStyle(
@@ -36,16 +34,10 @@ class HomePage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Spacer(
-              flex: 1,
-            ),
             Image.asset(
               AppImages.imagesLogo,
               width: 50,
               height: 50,
-            ),
-            const Spacer(
-              flex: 25,
             ),
           ],
         ),
