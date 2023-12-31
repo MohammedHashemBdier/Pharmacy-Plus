@@ -7,13 +7,12 @@ class OrderModel {
   final String? status;
   final String? paymentstatus;
 
-  OrderModel({
-    this.OrderID,
-    this.PharmacyNumber,
-    this.Quantity,
-    this.OrderDate,
-    this.Price,
-    this.status,
-    this.paymentstatus
-  });
+  OrderModel(
+      {this.OrderID,
+      this.PharmacyNumber,
+      this.Quantity,
+      this.OrderDate,
+      this.Price,
+      this.status,
+      this.paymentstatus});
 }
